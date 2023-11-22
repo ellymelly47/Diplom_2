@@ -30,8 +30,8 @@ class TestUserChangeData:
 
     @allure.title('Проверка успешного изменения пароля авторизованного юзера')
     def test_user_authorized_change_password_successful(self, base_url, user):
-        new_password = generate_login()
-        payload = {'email': new_password}
+        new_password = generate_password(6)
+        payload = {'password': new_password}
         headers = {'Authorization': user['access_token']}
         response = requests.patch(f'{base_url}/auth/user', data=payload, headers=headers)
 
